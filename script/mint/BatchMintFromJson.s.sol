@@ -21,17 +21,11 @@ contract BatchMintFromJson is Script {
         address[] memory recipients = vm.parseJsonAddressArray(json, ".recipients");
         uint256[] memory amounts = vm.parseJsonUintArray(json, ".amounts");
 
-        // Convert string amounts to uint with 18 decimals
-        uint256[] memory amountsInWei = new uint256[](amounts.length);
-        for (uint256 i = 0; i < amounts.length; i++) {
-            amountsInWei[i] = amounts[i] * 10 ** 18;
-        }
-
-        require(recipients.length == amountsInWei.length, "Recipients and amounts length mismatch");
+        require(recipients.length == amounts.length, "length mismatch");
 
         console.log("Preparing to batch mint to %s recipients", recipients.length);
         for (uint256 i = 0; i < recipients.length; i++) {
-            console.log("Recipient %s: %s tokens", recipients[i], amountsInWei[i]);
+            console.log("Recipient %s: %s tokens", recipients[i], amounts[i]);
         }
 
         // Start broadcasting transactions using the minter's private key
@@ -41,7 +35,7 @@ contract BatchMintFromJson is Script {
         LynoAI token = LynoAI(tokenAddress);
 
         // Batch mint tokens
-        token.batchMint(recipients, amountsInWei);
+        token.batchMint(recipients, amounts);
 
         vm.stopBroadcast();
 
