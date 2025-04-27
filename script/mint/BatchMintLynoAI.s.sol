@@ -16,9 +16,9 @@ contract BatchMintLynoAI is Script {
 
         // Replace with actual recipient addresses
         address[] memory recipients = new address[](3);
-        recipients[0] = 0xSampleAddress;
-        recipients[1] = 0xSampleAddress;
-        recipients[2] = 0xSampleAddress;
+        recipients[0] = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8;
+        recipients[1] = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8;
+        recipients[2] = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8;
 
         // Replace with actual token amounts to mint (in ETH)
         uint256[] memory amountsInEth = new uint256[](3);

@@ -15,7 +15,7 @@ contract MintLynoAI is Script {
         address tokenAddress = vm.envAddress("LYNO_TOKEN_ADDRESS");
 
         // Replace with actual recipient address and amount to mint
-        address recipient = 0xSampleAddress;
+        address recipient = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8;
         uint256 amountInEth = 1000;
 
         // Convert mint amount (add 18 decimals)
