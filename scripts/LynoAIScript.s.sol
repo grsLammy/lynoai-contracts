@@ -12,14 +12,14 @@ contract LynoAIScript is Script {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
 
         // Replace these with actual addresses or use environment variables
-        address owner = vm.envAddress("OWNER_ADDRESS");
+        address initialOwner = vm.envAddress("OWNER_ADDRESS");
         address minter = vm.envAddress("MINTER_ADDRESS");
 
         // Start broadcasting transactions using the deployer's private key
         vm.startBroadcast(deployerPrivateKey);
 
         // Deploy the contract (LynoAI)
-        LynoAI lynoai = new LynoAI(owner, minter);
+        LynoAI lynoai = new LynoAI(initialOwner, minter);
 
         vm.stopBroadcast();
 

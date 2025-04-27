@@ -35,13 +35,13 @@ contract LynoAI is ERC20Capped, Pausable, Ownable2Step {
     event MinterChanged(address indexed oldMinter, address indexed newMinter);
 
     /// @notice Initializes the contract with core parameters.
-    /// @param owner Initial owner address.
+    /// @param initialOwner Initial owner address.
     /// @param minterAddress Address authorized to mint tokens.
     constructor(
-        address owner,
+        address initialOwner,
         address minterAddress
-    ) ERC20(_NAME, _SYMBOL) ERC20Capped(_TOTAL_SUPPLY_CAP) Ownable(owner) {
-        if (owner == address(0) || minterAddress == address(0)) revert InvalidAddress();
+    ) ERC20(_NAME, _SYMBOL) ERC20Capped(_TOTAL_SUPPLY_CAP) Ownable(initialOwner) {
+        if (initialOwner == address(0) || minterAddress == address(0)) revert InvalidAddress();
 
         _minter = minterAddress;
     }
