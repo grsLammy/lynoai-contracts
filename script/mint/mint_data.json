@@ -1,0 +1,4 @@
+{
+  "recipients": ["0xSampleAddress", "0xSampleAddress", "0xSampleAddress"],
+  "amounts": ["1000", "2000", "3000"]
+}

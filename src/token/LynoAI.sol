@@ -22,6 +22,9 @@ contract LynoAI is ERC20Capped, Pausable, Ownable2Step {
     /// @notice Thrown when an invalid amount is provided.
     error InvalidAmount();
 
+    /// @notice Thrown when arrays have different lengths.
+    error ArrayLengthMismatch();
+
     string private constant _NAME = "Lyno AI";
     string private constant _SYMBOL = "LYNO";
     uint256 private constant _TOTAL_SUPPLY_CAP = 500_000_000 ether;
@@ -58,6 +61,24 @@ contract LynoAI is ERC20Capped, Pausable, Ownable2Step {
     function mint(address to, uint256 amount) external onlyMinter whenNotPaused {
         if (amount == 0) revert InvalidAmount();
         _mint(to, amount);
+    }
+
+    /// @notice Mints tokens to multiple addresses in a single transaction.
+    /// @param recipients Array of recipient addresses.
+    /// @param amounts Array of token amounts to mint to each recipient.
+    function batchMint(address[] calldata recipients, uint256[] calldata amounts) external onlyMinter whenNotPaused {
+        // Check that the arrays have the same length
+        if (recipients.length != amounts.length) revert ArrayLengthMismatch();
+
+        // Process each mint operation
+        for (uint256 i = 0; i < recipients.length; i++) {
+            // Validate recipient address and amount
+            if (recipients[i] == address(0)) revert InvalidAddress();
+            if (amounts[i] == 0) revert InvalidAmount();
+
+            // Mint tokens to the current recipient
+            _mint(recipients[i], amounts[i]);
+        }
     }
 
     /// @notice Updates the minter address.

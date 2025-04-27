@@ -3,7 +3,7 @@ pragma solidity ^0.8.28;
 import { Script } from "forge-std/Script.sol";
 import { console } from "forge-std/console.sol";
 import { TransparentUpgradeableProxy } from "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol";
-import { LynoAI } from "../src/token/LynoAI.sol";
+import { LynoAI } from "../../src/token/LynoAI.sol";
 
 contract LynoAIScript is Script {
     function test() public {}
