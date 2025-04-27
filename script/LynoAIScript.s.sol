@@ -11,7 +11,7 @@ contract LynoAIScript is Script {
         // Retrieve deployer's private key from environment variables
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
 
-        // Replace these with actual addresses or use environment variables
+        // Retrieve initial owner and minter addresses from environment variables
         address initialOwner = vm.envAddress("OWNER_ADDRESS");
         address minter = vm.envAddress("MINTER_ADDRESS");
 
